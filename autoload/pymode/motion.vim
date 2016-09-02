@@ -19,9 +19,9 @@ fun! pymode#motion#vmove(pattern, flags) range "{{{
     call cursor(a:lastline, 0)
     let end = pymode#motion#move(a:pattern, a:flags)
     call cursor(a:firstline, 0)
-    normal! v
+    normal! V
     call cursor(end)
-endfunction "}}} 
+endfunction "}}}
 
 
 fun! pymode#motion#pos_le(pos1, pos2) "{{{
@@ -52,7 +52,7 @@ fun! pymode#motion#select(pattern, inner) "{{{
         endif
 
         call cursor(snum, 1)
-        normal! v
+        normal! V
         call cursor(enum, len(getline(enum)))
     endif
 endfunction "}}}
