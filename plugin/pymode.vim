@@ -2,7 +2,6 @@
 let g:pymode_version = "0.9.4"
 
 com! PymodeVersion echomsg "Current python-mode version: " . g:pymode_version
-com! PymodeTroubleshooting call pymode#troubleshooting#test()
 
 " Enable pymode by default :)
 call pymode#default('g:pymode', 1)
@@ -12,7 +11,7 @@ call pymode#default('g:pymode_debug', 0)
 if !g:pymode || &cp || &diff
     " Update pymode status to prevent loading in other files and adding this
     " condition to all of them.
-    let g:pymode = v:false
+    let g:pymode = 0
     finish
 endif
 
@@ -112,10 +111,10 @@ call pymode#default("g:pymode_lint_message", 1)
 call pymode#default("g:pymode_lint_checkers", ['pyflakes', 'pep8', 'mccabe'])
 
 " Skip errors and warnings (e.g. E4,W)
-call pymode#default("g:pymode_lint_ignore", "")
+call pymode#default("g:pymode_lint_ignore", [])
 
 " Select errors and warnings (e.g. E4,W)
-call pymode#default("g:pymode_lint_select", "")
+call pymode#default("g:pymode_lint_select", [])
 
 " Auto open cwindow if any errors has been finded
 call pymode#default("g:pymode_lint_cwindow", 1)
@@ -171,7 +170,7 @@ call pymode#default('g:pymode_breakpoint_cmd', '')
 " ROPE (refactoring, codeassist) {{{
 "
 " Rope support
-call pymode#default('g:pymode_rope', v:false)
+call pymode#default('g:pymode_rope', 0)
 
 " System plugin variable
 if g:pymode_rope
@@ -305,12 +304,12 @@ elseif g:pymode_python == 'python3'
 
 else
 
-    let g:pymode_doc = v:false
-    let g:pymode_lint = v:false
-    let g:pymode_path = v:false
-    let g:pymode_rope = v:false
-    let g:pymode_run = v:false
-    let g:pymode_virtualenv = v:false
+    let g:pymode_doc = 0
+    let g:pymode_lint = 0
+    let g:pymode_path = 0
+    let g:pymode_rope = 0
+    let g:pymode_run = 0
+    let g:pymode_virtualenv = 0
 
     command! -nargs=1 PymodePython echo <args>
 
